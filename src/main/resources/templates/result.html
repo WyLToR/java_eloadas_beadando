@@ -1,0 +1,95 @@
+<!DOCTYPE HTML>
+<html lang="hu" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>SOAP - Eredmény</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, user-scalable=no"/>
+
+    <link rel="stylesheet" href="/assets/css/main.css"/>
+</head>
+
+<body class="is-preload">
+<div id="page-wrapper">
+
+    <div id="header-wrapper">
+        <header id="header" class="container">
+
+            <div id="logo">
+                <h1>
+                    <a href="/">Java beadandó</a>
+                </h1>
+            </div>
+
+            <nav id="nav">
+                <ul>
+                    <li><a href="/">Főoldal</a></li>
+
+                    <li class="current">
+                        <a href="/exercise">SOAP</a>
+                    </li>
+
+                    <li>
+                        <a href="#">Forex</a>
+                    </li>
+                </ul>
+            </nav>
+
+        </header>
+    </div>
+
+    <div id="main-wrapper">
+        <div class="container">
+
+            <section class="box">
+
+                <header>
+                    <h2>Historikus árfolyamok</h2>
+                </header>
+
+                <p th:text="'Prices: ' + ${sendOut}"></p>
+
+                <a href="/exercise"
+                   class="button">
+                    Vissza a lekérdezéshez
+                </a>
+
+            </section>
+
+        </div>
+    </div>
+
+    <div id="footer-wrapper">
+        <footer id="footer" class="container">
+
+            <div id="copyright">
+                <ul class="menu">
+                    <li>
+                        Készítette:
+                    </li>
+                    <li>
+                        Békési Patrik Olivér - NLYG87
+                    </li>
+                    <li>
+
+                    </li>
+                    <li>
+                        Design: HTML5 UP
+                    </li>
+                </ul>
+            </div>
+
+        </footer>
+    </div>
+
+</div>
+
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/jquery.dropotron.min.js"></script>
+<script src="/assets/js/browser.min.js"></script>
+<script src="/assets/js/breakpoints.min.js"></script>
+<script src="/assets/js/util.js"></script>
+<script src="/assets/js/main.js"></script>
+
+</body>
+</html>
