@@ -1,0 +1,88 @@
+<!DOCTYPE HTML>
+<html lang="hu"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Forex - Pozíció lezárva</title>
+    <meta charset="utf-8"/>
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, user-scalable=no"/>
+
+    <link rel="stylesheet"
+          href="/assets/css/main.css"/>
+</head>
+
+<body class="is-preload">
+
+<div id="page-wrapper">
+
+    <div id="main-wrapper">
+
+        <div class="container">
+
+            <section class="box">
+
+                <header>
+                    <h2>Pozíció lezárva</h2>
+                </header>
+
+                <p th:text="${tradeId}"></p>
+
+                <a href="/close_position"
+                   class="button">
+                    Másik pozíció zárása
+                </a>
+
+                <a href="/positions"
+                   class="button alt">
+                    Nyitott pozíciók
+                </a>
+
+            </section>
+
+        </div>
+
+    </div>
+
+
+    <div id="footer-wrapper">
+
+        <footer id="footer"
+                class="container">
+
+            <div id="copyright">
+
+                <ul class="menu">
+
+                    <li>
+                        Készítette:
+                    </li>
+                    <li>
+                        Békési Patrik Olivér - NLYG87
+                    </li>
+                    <li>
+
+                    </li>
+                    <li>
+                        Lukács Norbert - KMUJGW
+                    </li>
+                    <li>
+
+                    </li>
+                    <li>
+                        Design: HTML5 UP
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </footer>
+
+    </div>
+
+</div>
+
+</body>
+</html>

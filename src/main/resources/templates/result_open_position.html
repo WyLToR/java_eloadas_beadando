@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html lang="hu"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Forex - Pozíció megnyitva</title>
+    <meta charset="utf-8"/>
+
+    <link rel="stylesheet"
+          href="/assets/css/main.css"/>
+</head>
+
+<body>
+
+<div id="main-wrapper">
+    <div class="container">
+
+        <section class="box">
+
+            <header>
+                <h2>Pozíció megnyitva</h2>
+            </header>
+
+            <p>
+                Instrumentum:
+                <strong th:text="${instr}"></strong>
+            </p>
+
+            <p>
+                Mennyiség:
+                <strong th:text="${units}"></strong>
+            </p>
+
+            <p th:text="${id}"></p>
+
+            <a href="/open_position"
+               class="button">
+                Új pozíció nyitása
+            </a>
+
+        </section>
+
+    </div>
+</div>
+
+</body>
+</html>

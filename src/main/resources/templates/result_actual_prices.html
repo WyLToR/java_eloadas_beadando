@@ -1,0 +1,78 @@
+<!DOCTYPE HTML>
+<html lang="hu"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Forex - Aktuális ár</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, user-scalable=no"/>
+
+    <link rel="stylesheet"
+          href="/assets/css/main.css"/>
+</head>
+
+<body class="is-preload">
+
+<div id="page-wrapper">
+
+    <div id="main-wrapper">
+        <div class="container">
+
+            <section class="box">
+
+                <header>
+                    <h2>Aktuális ár eredménye</h2>
+                </header>
+
+                <p>
+                    Instrumentum:
+                    <strong th:text="${instr}"></strong>
+                </p>
+
+                <p th:utext="${price}"></p>
+
+                <a href="/actual_prices"
+                   class="button">
+                    Másik instrumentum
+                </a>
+
+            </section>
+
+        </div>
+    </div>
+
+    <div id="footer-wrapper">
+        <footer id="footer"
+                class="container">
+
+            <div id="copyright">
+                <ul class="menu">
+                    <li>
+                        Készítette:
+                    </li>
+                    <li>
+                        Békési Patrik Olivér - NLYG87
+                    </li>
+                    <li>
+
+                    </li>
+                    <li>
+                        Lukács Norbert - KMUJGW
+                    </li>
+                    <li>
+
+                    </li>
+                    <li>
+                        Design: HTML5 UP
+                    </li>
+                </ul>
+            </div>
+
+        </footer>
+    </div>
+
+</div>
+
+</body>
+</html>

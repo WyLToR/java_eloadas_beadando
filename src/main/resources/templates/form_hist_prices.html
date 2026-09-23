@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<html lang="hu"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Forex - Historikus árak</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, user-scalable=no"/>
+
+    <link rel="stylesheet"
+          href="/assets/css/main.css"/>
+</head>
+
+<body class="is-preload">
+
+<div id="page-wrapper">
+
+    <div id="main-wrapper">
+        <div class="container">
+
+            <section class="box">
+
+                <header>
+                    <h2>Historikus Forex árak</h2>
+                </header>
+
+                <form th:action="@{/hist_prices}"
+                      th:object="${param}"
+                      method="post">
+
+                    <label>Instrumentum</label>
+
+                    <select th:field="*{instrument}">
+                        <option value="EUR_USD">EUR_USD</option>
+                        <option value="USD_CHF">USD_CHF</option>
+                        <option value="GBP_USD">GBP_USD</option>
+                        <option value="USD_JPY">USD_JPY</option>
+                    </select>
+
+                    <br>
+
+                    <label>Granularity</label>
+
+                    <select th:field="*{granularity}">
+                        <option value="M1">M1</option>
+                        <option value="H1">H1</option>
+                        <option value="D">D</option>
+                        <option value="W">W</option>
+                        <option value="M">M</option>
+                    </select>
+
+                    <br>
+
+                    <input type="submit"
+                           value="Lekérdezés">
+
+                </form>
+
+            </section>
+
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

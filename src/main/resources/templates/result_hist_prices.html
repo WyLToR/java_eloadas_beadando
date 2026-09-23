@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html lang="hu"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Forex - Historikus árak</title>
+    <meta charset="utf-8"/>
+
+    <link rel="stylesheet"
+          href="/assets/css/main.css"/>
+</head>
+
+<body>
+
+<div id="main-wrapper">
+    <div class="container">
+
+        <section class="box">
+
+            <header>
+                <h2>Historikus árak eredménye</h2>
+            </header>
+
+            <p>
+                Instrumentum:
+                <strong th:text="${instr}"></strong>
+            </p>
+
+            <p>
+                Granularity:
+                <strong th:text="${granularity}"></strong>
+            </p>
+
+            <p>
+                Historikus árak:
+                <span th:text="${price}"></span>
+            </p>
+
+            <a href="/hist_prices"
+               class="button">
+                Másik lekérdezés
+            </a>
+
+        </section>
+
+    </div>
+</div>
+
+</body>
+</html>
