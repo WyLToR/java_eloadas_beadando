@@ -142,8 +142,6 @@ public class BeadandoEloadasApplication {
             Model model
     ) {
 
-        String strOut = "";
-
         List<String> instruments = new ArrayList<>();
         instruments.add(messageActPrice.getInstrument());
 
@@ -161,23 +159,42 @@ public class BeadandoEloadasApplication {
             PricingGetResponse response =
                     ctx.pricing.get(request);
 
-            for (ClientPrice price : response.getPrices()) {
-                strOut += price + "<br>";
-            }
+            ClientPrice price =
+                    response.getPrices().get(0);
+
+            model.addAttribute(
+                    "instrument",
+                    price.getInstrument()
+            );
+
+            model.addAttribute(
+                    "bid",
+                    price.getBids().get(0).getPrice()
+            );
+
+            model.addAttribute(
+                    "ask",
+                    price.getAsks().get(0).getPrice()
+            );
+
+            model.addAttribute(
+                    "time",
+                    price.getTime()
+            );
+
+            model.addAttribute(
+                    "status",
+                    price.getStatus()
+            );
+
+            model.addAttribute(
+                    "tradeable",
+                    price.getTradeable()
+            );
 
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-
-        model.addAttribute(
-                "instr",
-                messageActPrice.getInstrument()
-        );
-
-        model.addAttribute(
-                "price",
-                strOut
-        );
 
         return "result_actual_prices";
     }
@@ -195,8 +212,6 @@ public class BeadandoEloadasApplication {
             @ModelAttribute MessageHistPrice messageHistPrice,
             Model model
     ) {
-
-        String strOut;
 
         try {
 
@@ -238,34 +253,24 @@ public class BeadandoEloadasApplication {
             InstrumentCandlesResponse response =
                     ctx.instrument.candles(request);
 
-            strOut = "";
+            model.addAttribute(
+                    "instr",
+                    messageHistPrice.getInstrument()
+            );
 
-            for (Candlestick candle : response.getCandles()) {
+            model.addAttribute(
+                    "granularity",
+                    messageHistPrice.getGranularity()
+            );
 
-                strOut += candle.getTime()
-                        + "\t"
-                        + candle.getMid().getC()
-                        + ";";
-            }
+            model.addAttribute(
+                    "candles",
+                    response.getCandles()
+            );
 
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-
-        model.addAttribute(
-                "instr",
-                messageHistPrice.getInstrument()
-        );
-
-        model.addAttribute(
-                "granularity",
-                messageHistPrice.getGranularity()
-        );
-
-        model.addAttribute(
-                "price",
-                strOut
-        );
 
         return "result_hist_prices";
     }
@@ -313,11 +318,14 @@ public class BeadandoEloadasApplication {
             OrderCreateResponse response =
                     ctx.order.create(request);
 
-            strOut =
-                    "tradeId: "
-                            + response
+            String tradeId =
+                    response
                             .getOrderFillTransaction()
-                            .getId();
+                            .getTradeOpened()
+                            .getTradeID()
+                            .toString();
+
+            strOut = "tradeId: " + tradeId;
 
         } catch (Exception e) {
             throw new RuntimeException(e);
@@ -383,13 +391,33 @@ public class BeadandoEloadasApplication {
         String tradeId =
                 String.valueOf(messageClosePosition.getTradeId());
 
-        String strOut =
-                "Lezárt tradeId: " + tradeId;
+        Context ctx =
+                new Context(Config.URL, Config.TOKEN);
 
         try {
 
-            Context ctx =
-                    new Context(Config.URL, Config.TOKEN);
+            List<Trade> trades =
+                    ctx.trade
+                            .listOpen(Config.ACCOUNTID)
+                            .getTrades();
+
+            boolean tradeExists = trades.stream()
+                    .anyMatch(trade ->
+                            trade.getId()
+                                    .toString()
+                                    .equals(tradeId)
+                    );
+
+            if (!tradeExists) {
+
+                model.addAttribute(
+                        "tradeId",
+                        "Nem található nyitott pozíció ezzel a Trade ID-val: "
+                                + tradeId
+                );
+
+                return "result_close_position";
+            }
 
             ctx.trade.close(
                     new TradeCloseRequest(
@@ -398,14 +426,18 @@ public class BeadandoEloadasApplication {
                     )
             );
 
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+            model.addAttribute(
+                    "tradeId",
+                    "Lezárt Trade ID: " + tradeId
+            );
 
-        model.addAttribute(
-                "tradeId",
-                strOut
-        );
+        } catch (Exception e) {
+
+            model.addAttribute(
+                    "tradeId",
+                    "A pozíció zárása sikertelen."
+            );
+        }
 
         return "result_close_position";
     }
