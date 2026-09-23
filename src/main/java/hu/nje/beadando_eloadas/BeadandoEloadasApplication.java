@@ -14,9 +14,18 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import java.io.StringReader;import java.util.ArrayList;import java.util.List;
+import java.io.StringReader;
+import java.util.ArrayList;
+import java.util.List;
 import javax.xml.parsers.DocumentBuilderFactory;
-import org.w3c.dom.Document;import org.w3c.dom.Element;import org.w3c.dom.NodeList;import org.xml.sax.InputSource;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
+import org.xml.sax.InputSource;
+
+import com.oanda.v20.Context;
+import com.oanda.v20.account.AccountSummary;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @SpringBootApplication
 @Controller
@@ -90,5 +99,28 @@ public class BeadandoEloadasApplication {
         model.addAttribute("rates", rates);
 
         return "result";
+    }
+
+    @GetMapping("/account_info")
+    @ResponseBody
+    public AccountSummary accountInfo() {
+
+        Context ctx =
+                new Context(Config.URL, Config.TOKEN);
+
+        try {
+
+            AccountSummary summary =
+                    ctx.account
+                            .summary(Config.ACCOUNTID)
+                            .getAccount();
+
+            return summary;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return null;
     }
 }
