@@ -1,0 +1,228 @@
+<!DOCTYPE HTML>
+<html lang="hu"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Forex - Számlainformációk</title>
+    <meta charset="utf-8"/>
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, user-scalable=no"/>
+
+    <link rel="stylesheet"
+          href="/assets/css/main.css"/>
+</head>
+
+<body class="is-preload">
+
+<div id="page-wrapper">
+
+    <div id="header-wrapper">
+
+        <header id="header" class="container">
+
+            <div id="logo">
+                <h1>
+                    <a href="/">Java beadandó</a>
+                </h1>
+            </div>
+
+            <nav id="nav">
+                <ul>
+
+                    <li>
+                        <a href="/">Főoldal</a>
+                    </li>
+
+                    <li>
+                        <a href="/exercise">SOAP</a>
+                    </li>
+
+                    <li class="current">
+
+                        <a href="#">Forex</a>
+
+                        <ul>
+
+                            <li >
+                                <a href="/account_info">
+                                    Forex-account
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="/actual_prices">
+                                    Forex-AktÁr
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="/hist_prices">
+                                    Forex-HistÁr
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="/open_position">
+                                    Forex-Nyit
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="/positions">
+                                    Forex-Poz
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="/close_position">
+                                    Forex-Zár
+                                </a>
+                            </li>
+
+                        </ul>
+
+                    </li>
+
+                </ul>
+            </nav>
+
+        </header>
+
+    </div>
+
+
+    <div id="main-wrapper">
+
+        <div class="container">
+
+            <section class="box">
+
+                <header>
+                    <h2>Oanda számlainformációk</h2>
+                </header>
+
+
+                <div class="table-wrapper">
+
+                    <table>
+
+                        <tbody>
+
+                        <tr>
+                            <th>Account ID</th>
+                            <td th:text="${account.id}"></td>
+                        </tr>
+
+                        <tr>
+                            <th>Név</th>
+                            <td th:text="${account.alias}"></td>
+                        </tr>
+
+                        <tr>
+                            <th>Deviza</th>
+                            <td th:text="${account.currency}"></td>
+                        </tr>
+
+                        <tr>
+                            <th>Egyenleg</th>
+                            <td th:text="${account.balance}"></td>
+                        </tr>
+
+                        <tr>
+                            <th>Nyitott trade-ek</th>
+                            <td th:text="${account.openTradeCount}"></td>
+                        </tr>
+
+                        <tr>
+                            <th>Nyitott pozíciók</th>
+                            <td th:text="${account.openPositionCount}"></td>
+                        </tr>
+
+                        <tr>
+                            <th>Margin használat</th>
+                            <td th:text="${account.marginUsed}"></td>
+                        </tr>
+
+                        <tr>
+                            <th>Elérhető margin</th>
+                            <td th:text="${account.marginAvailable}"></td>
+                        </tr>
+
+                        <tr>
+                            <th>Nem realizált P/L</th>
+                            <td th:text="${account.unrealizedPL}"></td>
+                        </tr>
+
+                        <tr>
+                            <th>Utolsó tranzakció ID</th>
+                            <td th:text="${account.lastTransactionID}"></td>
+                        </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+                <a href="/account_info"
+                   class="button">
+                    Frissítés
+                </a>
+
+            </section>
+
+        </div>
+
+    </div>
+
+
+    <div id="footer-wrapper">
+
+        <footer id="footer"
+                class="container">
+
+            <div id="copyright">
+
+                <ul class="menu">
+
+                    <li>
+                        Készítette:
+                    </li>
+                    <li>
+                        Békési Patrik Olivér - NLYG87
+                    </li>
+                    <li>
+
+                    </li>
+                    <li>
+                        Lukács Norbert - KMUJGW
+                    </li>
+                    <li>
+
+                    </li>
+                    <li>
+                        Design: HTML5 UP
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </footer>
+
+    </div>
+
+</div>
+
+
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/jquery.dropotron.min.js"></script>
+<script src="/assets/js/browser.min.js"></script>
+<script src="/assets/js/breakpoints.min.js"></script>
+<script src="/assets/js/util.js"></script>
+<script src="/assets/js/main.js"></script>
+
+</body>
+</html>

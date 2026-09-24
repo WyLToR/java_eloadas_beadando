@@ -1,0 +1,205 @@
+<!DOCTYPE HTML>
+<html lang="hu"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Forex - Nyitott pozíciók</title>
+    <meta charset="utf-8"/>
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, user-scalable=no"/>
+
+    <link rel="stylesheet"
+          href="/assets/css/main.css"/>
+</head>
+
+<body class="is-preload">
+
+<div id="page-wrapper">
+
+    <div id="header-wrapper">
+        <header id="header" class="container">
+
+            <div id="logo">
+                <h1>
+                    <a href="/">Java beadandó</a>
+                </h1>
+            </div>
+
+            <nav id="nav">
+                <ul>
+                    <li>
+                        <a href="/">Főoldal</a>
+                    </li>
+
+                    <li>
+                        <a href="/exercise">SOAP</a>
+                    </li>
+
+                    <li class="current">
+                        <a href="#">Forex</a>
+
+                        <ul>
+                            <li>
+                                <a href="/account_info">
+                                    Forex-account
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="/actual_prices">
+                                    Forex-AktÁr
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="/hist_prices">
+                                    Forex-HistÁr
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="/open_position">
+                                    Forex-Nyit
+                                </a>
+                            </li>
+
+                            <li class="current">
+                                <a href="/positions">
+                                    Forex-Poz
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="/close_position">
+                                    Forex-Zár
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+
+        </header>
+    </div>
+
+
+    <div id="main-wrapper">
+        <div class="container">
+
+            <section class="box">
+
+                <header>
+                    <h2>Nyitott Forex pozíciók</h2>
+                </header>
+
+
+                <p th:if="${#lists.isEmpty(trades)}">
+                    Jelenleg nincs nyitott pozíció.
+                </p>
+
+
+                <div class="table-wrapper"
+                     th:unless="${#lists.isEmpty(trades)}">
+
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>Trade ID</th>
+                            <th>Instrumentum</th>
+                            <th>Nyitás ideje</th>
+                            <th>Mennyiség</th>
+                            <th>Nyitási ár</th>
+                            <th>Nem realizált P/L</th>
+                        </tr>
+                        </thead>
+
+                        <tbody>
+
+                        <tr th:each="trade : ${trades}">
+
+                            <td th:text="${trade.id}">
+                            </td>
+
+                            <td th:text="${trade.instrument}">
+                            </td>
+
+                            <td th:text="${trade.openTime}">
+                            </td>
+
+                            <td th:text="${trade.currentUnits}">
+                            </td>
+
+                            <td th:text="${trade.price}">
+                            </td>
+
+                            <td th:text="${trade.unrealizedPL}">
+                            </td>
+
+                        </tr>
+
+                        </tbody>
+                    </table>
+
+                </div>
+
+
+                <a href="/positions"
+                   class="button">
+                    Frissítés
+                </a>
+
+            </section>
+
+        </div>
+    </div>
+
+
+    <div id="footer-wrapper">
+
+        <footer id="footer"
+                class="container">
+
+            <div id="copyright">
+
+                <ul class="menu">
+
+                    <li>
+                        Készítette:
+                    </li>
+                    <li>
+                        Békési Patrik Olivér - NLYG87
+                    </li>
+                    <li>
+
+                    </li>
+                    <li>
+                        Lukács Norbert - KMUJGW
+                    </li>
+                    <li>
+
+                    </li>
+                    <li>
+                        Design: HTML5 UP
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </footer>
+
+    </div>
+
+</div>
+
+
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/jquery.dropotron.min.js"></script>
+<script src="/assets/js/browser.min.js"></script>
+<script src="/assets/js/breakpoints.min.js"></script>
+<script src="/assets/js/util.js"></script>
+<script src="/assets/js/main.js"></script>
+
+</body>
+</html>

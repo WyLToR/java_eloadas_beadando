@@ -1,0 +1,180 @@
+<!DOCTYPE HTML>
+<html lang="hu"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Forex - Historikus árak</title>
+    <meta charset="utf-8"/>
+
+    <link rel="stylesheet"
+          href="/assets/css/main.css"/>
+</head>
+
+<body>
+<div class="page-wrapper">
+    <div id="header-wrapper">
+        <header id="header" class="container">
+
+            <div id="logo">
+                <h1>
+                    <a href="/exercise">SOAP</a>
+                </h1>
+            </div>
+
+            <nav id="nav">
+                <ul>
+                    <li class="current">
+                        <a href="/">Főoldal</a>
+                    </li>
+
+                    <li>
+                        <a href="/exercise">SOAP</a>
+                    </li>
+
+                    <li>
+                        <a href="#">Forex</a>
+                        <ul>
+                            <li>
+                                <a href="/account_info">Forex-account</a>
+                            </li>
+
+                            <li>
+                                <a href="/actual_prices">Forex-AktÁr</a>
+                            </li>
+
+                            <li>
+                                <a href="/hist_prices">Forex-HistÁr</a>
+                            </li>
+
+                            <li>
+                                <a href="/open_position">Forex-Nyit</a>
+                            </li>
+
+                            <li>
+                                <a href="/positions">Forex-Poz</a>
+                            </li>
+
+                            <li>
+                                <a href="/close_position">Forex-Zár</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+
+        </header>
+    </div>
+    <div id="main-wrapper">
+        <div class="container">
+
+            <section class="box">
+
+                <header>
+                    <h2>Historikus árak</h2>
+                    <p>
+                        Az Oanda utolsó 10 historikus áradata
+                    </p>
+                </header>
+
+                <div class="row">
+
+                    <div class="col-6 col-12-small">
+                        <p>
+                            <strong>Instrumentum:</strong>
+                            <span th:text="${instr}"></span>
+                        </p>
+                    </div>
+
+                    <div class="col-6 col-12-small">
+                        <p>
+                            <strong>Granularity:</strong>
+                            <span th:text="${granularity}"></span>
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="table-wrapper">
+
+                    <table>
+
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Időpont</th>
+                            <th>Záróár</th>
+                        </tr>
+                        </thead>
+
+                        <tbody>
+
+                        <tr th:each="candle, stat : ${candles}">
+
+                            <td th:text="${stat.count}">
+                                1
+                            </td>
+
+                            <td th:text="${candle.time}">
+                                2026-09-23T09:33:00Z
+                            </td>
+
+                            <td>
+                                <strong th:text="${candle.mid.c}">
+                                    1.14126
+                                </strong>
+                            </td>
+
+                        </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+                <a href="/hist_prices"
+                   class="button">
+                    Új lekérdezés
+                </a>
+
+            </section>
+
+        </div>
+    </div>
+    <div id="footer-wrapper">
+        <footer id="footer" class="container">
+
+            <div id="copyright">
+                <ul class="menu">
+                    <li>
+                        Készítette:
+                    </li>
+                    <li>
+                        Békési Patrik Olivér - NLYG87
+                    </li>
+                    <li>
+
+                    </li>
+                    <li>
+                        Lukács Norbert - KMUJGW
+                    </li>
+                    <li>
+
+                    </li>
+                    <li>
+                        Design: HTML5 UP
+                    </li>
+                </ul>
+            </div>
+
+        </footer>
+    </div>
+</div>
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/jquery.dropotron.min.js"></script>
+<script src="/assets/js/browser.min.js"></script>
+<script src="/assets/js/breakpoints.min.js"></script>
+<script src="/assets/js/util.js"></script>
+<script src="/assets/js/main.js"></script>
+</body>
+</html>

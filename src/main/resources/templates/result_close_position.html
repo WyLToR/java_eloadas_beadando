@@ -1,0 +1,144 @@
+<!DOCTYPE HTML>
+<html lang="hu"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Forex - Pozíció lezárva</title>
+    <meta charset="utf-8"/>
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, user-scalable=no"/>
+
+    <link rel="stylesheet"
+          href="/assets/css/main.css"/>
+</head>
+
+<body class="is-preload">
+
+<div id="page-wrapper">
+    <div id="header-wrapper">
+        <header id="header" class="container">
+
+            <div id="logo">
+                <h1>
+                    <a href="/exercise">SOAP</a>
+                </h1>
+            </div>
+
+            <nav id="nav">
+                <ul>
+                    <li>
+                        <a href="/">Főoldal</a>
+                    </li>
+
+                    <li>
+                        <a href="/exercise">SOAP</a>
+                    </li>
+
+                    <li>
+                        <a href="#">Forex</a>
+                        <ul>
+                            <li>
+                                <a href="/account_info">Forex-account</a>
+                            </li>
+
+                            <li>
+                                <a href="/actual_prices">Forex-AktÁr</a>
+                            </li>
+
+                            <li>
+                                <a href="/hist_prices">Forex-HistÁr</a>
+                            </li>
+
+                            <li>
+                                <a href="/open_position">Forex-Nyit</a>
+                            </li>
+
+                            <li>
+                                <a href="/positions">Forex-Poz</a>
+                            </li>
+
+                            <li>
+                                <a href="/close_position">Forex-Zár</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+
+        </header>
+    </div>
+    <div id="main-wrapper">
+
+        <div class="container">
+
+            <section class="box">
+
+                <header>
+                    <h2>Pozíció lezárva</h2>
+                </header>
+
+                <p th:text="${tradeId}"></p>
+
+                <a href="/close_position"
+                   class="button">
+                    Másik pozíció zárása
+                </a>
+
+                <a href="/positions"
+                   class="button alt">
+                    Nyitott pozíciók
+                </a>
+
+            </section>
+
+        </div>
+
+    </div>
+
+
+    <div id="footer-wrapper">
+
+        <footer id="footer"
+                class="container">
+
+            <div id="copyright">
+
+                <ul class="menu">
+
+                    <li>
+                        Készítette:
+                    </li>
+                    <li>
+                        Békési Patrik Olivér - NLYG87
+                    </li>
+                    <li>
+
+                    </li>
+                    <li>
+                        Lukács Norbert - KMUJGW
+                    </li>
+                    <li>
+
+                    </li>
+                    <li>
+                        Design: HTML5 UP
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </footer>
+
+    </div>
+
+</div>
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/jquery.dropotron.min.js"></script>
+<script src="/assets/js/browser.min.js"></script>
+<script src="/assets/js/breakpoints.min.js"></script>
+<script src="/assets/js/util.js"></script>
+<script src="/assets/js/main.js"></script>
+</body>
+</html>
